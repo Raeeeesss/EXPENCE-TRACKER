@@ -1,0 +1,45 @@
+/* ================== TRANSACTIONS ================== */
+.tx-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tx-list li {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+/* ===== TRANSACTION HISTORY ===== */
+.year-block {
+  margin-bottom: 20px;
+}
+
+.year-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.month-box {
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  font-size: 14px;
+}
+
+.month-box:hover,
+.month-box.active {
+  background: var(--primary);
+  color: white;
+}

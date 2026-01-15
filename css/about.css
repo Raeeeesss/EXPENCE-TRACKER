@@ -1,0 +1,20 @@
+/* ================== ABOUT PAGE ================== */
+.main section.panel {
+  max-width: 1100px;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.main section.panel h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.main section.panel p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+}

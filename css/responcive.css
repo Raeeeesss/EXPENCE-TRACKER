@@ -1,0 +1,36 @@
+/* ================== MOBILE RESPONSIVE ================== */
+@media (max-width: 768px) {
+
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    box-shadow: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  #myform input,
+  #myform textarea,
+  #myform button {
+    width: 100%;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+}

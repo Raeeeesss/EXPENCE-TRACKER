@@ -1,0 +1,40 @@
+/* ================== CONTACT PAGE ================== */
+#myform {
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+#myform h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--text);
+}
+
+#myform label {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#myform input,
+#myform textarea {
+  width: 50%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+#myform input:focus,
+#myform textarea:focus {
+  border-color: var(--primary);
+}
+
+#myform button {
+  width: 50%;
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 10px;
+}

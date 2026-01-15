@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VERDENT | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand"> Verdent · Expence Tracker</div>
+
+      <div class="profile">
+        <div class="profile-img">
+          <img id="profileImg" alt="profile">
+          <p class="edit-btn" onclick="openImagePicker()">✎</p>
+        </div>
+        <h4 class="puser"></h4>
+
+        <!-- hidden file input -->
+        <input type="file" id="imgInput" accept="image/*" hidden>
+      </div>
+
+
+      <nav>
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </nav>
+      <a class="logout" href="login.html">LogOut</a>
+
+    </aside>
+
+    <main class="main">
+
+      <div class="topbar">
+        <h2>Dashboard</h2>
+        <span id="currentDate"></span>
+      </div>
+
+      <section class="cards">
+        <div class="card income">
+          <h4>Income</h4>
+          <p id="income">₹0</p>
+          <button onclick="butt()">ADD</button>
+          <div id="add">
+            <input type="number" id="incomeInput" placeholder="Monthly Income">
+            <button onclick="setIncome()">Save</button>
+          </div>
+
+
+
+        </div>
+        <div class="card expense">
+          <h4>Expenses</h4>
+          <p id="expense">₹0</p>
+        </div>
+        <div class="card balance">
+          <h4>Balance</h4>
+          <p id="balance">₹0</p>
+        </div>
+        <div class="card count">
+          <h4>Transactions</h4>
+          <h4 id="date"></h4>
+          <p id="txCount">0</p>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <div class="panel">
+          <h3>Add Expense</h3>
+          <select id="category">
+            <option>Food</option>
+            <option>Shopping</option>
+            <option>Fuel</option>
+            <option>Travel</option>
+          </select>
+          <button onclick="ad()">Add</button>
+          <div id="ad">
+            <input type="number" id="amount" placeholder="Amount">
+            <button onclick="addExpense()">Save</button>
+          </div>
+
+        </div>
+      </section>
+      <section class="panel">
+        <h3>Total Expenses</h3>
+        <section class="panel">
+          <h3>Monthly Analysis</h3>
+          <canvas id="analysisChart" height="120"></canvas>
+          <p id="analysisText"></p>
+        </section>
+
+      </section>
+
+
+
+    </main>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>

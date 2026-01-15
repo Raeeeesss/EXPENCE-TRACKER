@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up | Verdent · Expence Tracker</title>
+    <link rel="icon" href="logo.jpg" sizes="32x32" type="image/jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(assets/expencetracker.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(2px);
+            z-index: -1;
+
+        }
+
+
+        .wrapper {
+            margin-left: 230px;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+        }
+
+
+
+        .left {
+            flex: 1;
+        }
+
+
+        .brand h1 {
+            font-size: 42px;
+            line-height: 1.2;
+        }
+
+        .brand span {
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+        .tagline {
+
+            font-style: italic;
+            font-size: 14px;
+            color: #ffffffb4;
+        }
+
+        .quote {
+            font-size: 14px;
+            font-style: italic;
+            color: #ffffff8e;
+            margin-bottom: 30px;
+        }
+
+        .signup-box {
+            background: rgba(32, 30, 30, 0.349);
+            backdrop-filter: blur(2px);
+            padding: 28px;
+            border-radius: 16px;
+            max-width: 380px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+
+        .signup-box h1 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .signup-box h3 {
+            font-weight: 500;
+            color: #dff0d8;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        input {
+            color: #000000;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: 2px solid #110101;
+        }
+
+        button {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #000000;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #00000094;
+            color: #ffffffc5;
+        }
+
+        a {
+            color: #dff0d8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        #error {
+            color: #ff0000;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .wrapper {
+                margin-right: 300px;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 20px;
+            }
+
+            .brand {
+                width: 150%;
+                text-align: left;
+            }
+
+            .brand h1 {
+                font-size: 28px;
+            }
+
+            .brand span {
+                font-size: 14px;
+            }
+
+            .signup-box {
+                width: 200%;
+                max-width: 380px;
+                padding: 28px;
+                margin: 0 auto;
+            }
+
+            .signup-box h2 {
+                font-size: 18px;
+            }
+
+            .tagline {
+                font-size: 12px;
+            }
+
+            .quote {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="brand">
+            <h1>Raee Verse</h1>
+            <span>VERDANT · EXPENSE TRACKER</span>
+        </div>
+        <div class="left">
+            <div class="signup-box">
+                <h1>Create Account</h1>
+                <h3>Expense Tracker</h3>
+                <p class="tagline">
+                    Smart finance control for modern living
+                </p>
+
+                <p class="quote">
+                    “Where every rupee finds its purpose.”
+                </p>
+
+                <form id="signform">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="text" id="email" placeholder="Email or Phone" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" id="cpassword" placeholder="Confirm Password" required>
+
+                    <button type="submit">Sign Up</button>
+                    <p>You have an account? <a href="login.html"><b>Login here</b>
+                        </a></p>
+
+
+                    <p id="error"></p>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        document.getElementById("signform").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById(`username`).value
+            const email = document.getElementById(`email`).value;
+            const password = document.getElementById("password").value;
+            const cpassword = document.getElementById("cpassword").value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|co\.in)$/;
+            const mobilePattern = /^[6-9]\d{9}$/;
+
+
+            const isEmailValid = emailPattern.test(email);
+            const isMobileValid = mobilePattern.test(email);
+
+            if (!isEmailValid && !isMobileValid) {
+                document.getElementById(`error`).innerText = `Please enter valid email or phone`
+                return;
+            }
+            if (password !== cpassword) {
+                document.getElementById("error").innerText = "Passwords do not match";
+                return;
+            }
+            let users = JSON.parse(localStorage.getItem(`users`)) || []
+            const isDuplicate = users.some(user => user.email === email)
+            if (isDuplicate) {
+                document.getElementById("error").innerText = "This email or phone is already in exist.";
+                return;
+            }
+
+            const user = {
+                username: username,
+                email: email,
+                password: password
+            }
+            users.push(user)
+            localStorage.setItem(`users`, JSON.stringify(users))
+            window.location.href = "login.html";
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

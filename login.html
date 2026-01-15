@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.jpg" sizes="32x32" type="image/jpeg">
+    <title>Login | Verdent · Expence Tracker</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: grid;
+            gap: 10px;
+            animation: fadeIn 0.45s ease forwards;
+        }
+
+        .step {
+            opacity: 0;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('assets/expencetracker.png') center/cover no-repeat;
+            color: #fff;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .loginbox {
+            width: 190%;
+            max-width: 400px;
+            background: rgba(41, 39, 39, 0.35);
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+
+
+        .header h1 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .header h3 {
+            font-weight: 500;
+            color: #dff0d8;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        .quote {
+            font-size: 12px;
+            font-style: italic;
+            color: #fffafaaf;
+            margin-bottom: 10px;
+        }
+
+        .loginbox {
+            text-align: left;
+        }
+
+        .header {
+            text-align: left;
+        }
+
+
+        input {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        input:focus {
+            outline: 2px solid #ffffff57;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.795);
+        }
+
+        button {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #000000;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #000000b2;
+            transform: translateY(-1px);
+        }
+
+        a {
+            color: #dff0d8;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #error {
+            color: #ff8a80;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .brand {
+            width: 150%;
+            text-align: left;
+        }
+
+        .brand h1 {
+            font-size: 42px;
+        }
+
+        .brand span {
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+        .step-indicator {
+            font-size: 12px;
+            opacity: 0.8;
+            text-align: left;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            body {
+                justify-content: center;
+                align-items: center;
+                padding: 16px;
+            }
+
+            .container {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .brand {
+                width: 100%;
+                text-align: left;
+                max-width: 400px;
+            }
+
+            .brand h1 {
+                font-size: 26px;
+            }
+
+            .brand span {
+                font-size: 13px;
+            }
+
+            .loginbox {
+                width: 100%;
+                max-width: 400px;
+                padding: 20px;
+                text-align: left;
+            }
+
+            .header {
+                text-align: left;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="brand">
+            <h1>Raee Verse</h1>
+            <span>VERDANT · EXPENSE TRACKER</span>
+        </div>
+
+        <div class="loginbox">
+
+
+            <div class="header">
+                <h1>Login</h1>
+                <h3>Expense Tracker</h3>
+                <p class="tagline">Smart finance control for modern living</p>
+                <p class="quote">“Where every rupee finds its purpose.”</p>
+            </div>
+            <form id="login">
+                <div class="step-indicator" id="stepText">Step 1 of 2</div>
+
+                <!-- STEP 1 -->
+                <div class="step active">
+                    <input type="text" id="email" placeholder="Enter email or phone">
+                    <button type="button" onclick="nextStep()">Continue</button>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step">
+                    <input type="password" id="password" placeholder="Enter password">
+                    <button type="submit">Login</button>
+                </div>
+                <p>Don't have an account?
+                    <a id="sign" href="signup.html"><b>Signup</b></a>
+                </p>
+
+                <p id="error"></p>
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        const steps = document.querySelectorAll(".step");
+        const stepText = document.getElementById("stepText");
+        let currentstep = 0;
+
+        function nextStep() {
+            const input = steps[currentstep].querySelector("input");
+
+            if (!input.value.trim()) {
+                document.getElementById("error").innerText = "Please fill the field";
+                return;
+            }
+
+            document.getElementById("error").innerText = "";
+
+            steps[currentstep].classList.remove("active");
+            currentstep++;
+            steps[currentstep].classList.add("active");
+
+            stepText.innerText = `Step ${currentstep + 1} of ${steps.length}`;
+        }
+
+        document.getElementById("login").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const error = document.getElementById("error");
+
+            if (users.length === 0) {
+                error.innerText = "No user found. Please create an account.";
+                return;
+            }
+
+            // 🔍 FIND MATCHING USER
+            const matchedUser = users.find(
+                user => user.email === email && user.password === password
+            );
+
+            if (matchedUser) {
+                window.location.href = "index.html";
+            } else {
+                error.innerText = "Wrong email or password";
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

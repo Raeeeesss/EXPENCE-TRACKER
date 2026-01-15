@@ -1,0 +1,108 @@
+/* ================== TOP BAR ================== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+/* ================== CARDS ================== */
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.card {
+  padding: 18px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.card p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.income p { color: var(--success); }
+.expense p { color: var(--danger); }
+.balance p { color: var(--primary); }
+
+/* ================== PANELS ================== */
+.panel {
+  margin-top: 25px;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ================== FORM ================== */
+input,
+select,
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ================== CHART ================== */
+.chart-placeholder {
+  height: 260px;
+  display: grid;
+  place-items: center;
+  color: #94a3b8;
+}
+
+#analysisText {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #475569;
+}
+
+/* ================== UTIL ================== */
+#add,
+#ad {
+  display: none;
+}
+/* Sidebar layout */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Nav should NOT stretch fully */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Logout button at bottom */
+.sidebar .logout {
+  margin-top: auto;              /* 🔥 pushes to bottom */
+  padding: 12px 10px;
+  color: #383636a4;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.sidebar .logout:hover {
+  color: #000;
+}

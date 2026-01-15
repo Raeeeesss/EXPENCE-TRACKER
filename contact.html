@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VERDENT | Contact</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+    (function () {
+        emailjs.init("mHowrhhVwa5YNfMdx");
+    })();
+</script>
+
+
+<body>
+    <div class="app">
+
+        <aside class="sidebar">
+            <div class="brand"> Verdent · Expence Tracker</div>
+
+            <div class="profile">
+                <div class="profile-img">
+                    <img id="profileImg" alt="profile">
+                    <p class="edit-btn" onclick="openImagePicker()">✎</p>
+                </div>
+                <h4 class="puser"></h4>
+
+                <!-- hidden file input -->
+                <input type="file" id="imgInput" accept="image/*" hidden>
+            </div>
+
+
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="about.html">About</a>
+                <a class="active" href="contact.html">Contact</a>
+
+            </nav>
+            <a class="logout" href="login.html">LogOut</a>
+
+        </aside>
+
+        <main class="main">
+
+
+
+            <form id="myform">
+                <h3>Contact Us</h3>
+
+                <label>Name</label>
+                <input id="name" type="text" placeholder="Enter your Name" required>
+
+                <label>Email or Phone</label>
+                <input type="text" placeholder="Enter your email or Phone" required id="phone">
+
+                <label>Message</label>
+                <textarea placeholder="Enter your message" required id="message" rows="5"></textarea>
+
+                <button type="button" onclick="sendmail()">Send Message</button>
+            </form>
+
+    </div>
+    <script src="js/contact.js"></script>
+
+
+</body>
+
+</html>

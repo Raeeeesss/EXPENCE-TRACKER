@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VERDENT | Transactions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Verdent · Expence Tracker</div>
+      <div class="profile">
+        <div class="profile-img">
+          <img id="profileImg" alt="profile">
+          <p class="edit-btn" onclick="openImagePicker()">✎</p>
+        </div>
+        <h4 class="puser"></h4>
+      </div>
+      <nav>
+        <a href="index.html">Dashboard</a>
+        <a class="active" href="#">Transactions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </nav>
+      <a class="logout" href="login.html">LogOut</a>
+
+    </aside>
+
+    <main class="main">
+      <h2>Transactions</h2>
+
+      <div id="history"></div>
+
+      <ul id="transactions" class="tx-list"></ul>
+    </main>
+
+
+    <script src="js/transaction.js"></script>
+</body>
+
+</html>
