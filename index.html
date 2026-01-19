@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verdent</title>
+  <script>
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (loggedIn === "true") {
+      window.location.replace("./dashboard.html");
+    } else {
+      window.location.replace("./login.html");
+    }
+  </script>
+</head>
+<body></body>
+</html>

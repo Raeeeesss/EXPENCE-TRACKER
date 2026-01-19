@@ -6,11 +6,10 @@
   <title>VERDENT | Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- AUTH PROTECTION -->
   <script>
-    const sessionUser = localStorage.getItem("loggedInUser");
-    if (!sessionUser) {
-      window.location.replace("login.html");
+    const loggedIn = localStorage.getItem("loggedIn");
+    if (loggedIn !== "true") {
+      window.location.replace("./login.html");
     }
   </script>
 </head>
@@ -32,87 +31,77 @@
     </div>
 
     <nav>
-      <a class="active" href="dashboard.html">Dashboard</a>
-      <a href="transactions.html">Transactions</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a class="active" href="./dashboard.html">Dashboard</a>
+      <a href="./transactions.html">Transactions</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
     </nav>
 
     <a class="logout" href="#" onclick="logout()">LogOut</a>
   </aside>
 
   <main class="main">
+
     <div class="topbar">
       <h2>Dashboard</h2>
       <span id="currentDate"></span>
     </div>
 
-    <!-- Your existing dashboard content stays SAME -->
-
-  </main>
-</div>
-
-<script src="js/index.js"></script>
-
-<script>
-  function logout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.replace("login.html");
-  }
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>VERDENT | Dashboard</title>
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- AUTH PROTECTION -->
-  <script>
-    const sessionUser = localStorage.getItem("loggedInUser");
-    if (!sessionUser) {
-      window.location.replace("login.html");
-    }
-  </script>
-</head>
-
-<body>
-
-<div class="app">
-
-  <aside class="sidebar">
-    <div class="brand">Verdent · Expense Tracker</div>
-
-    <div class="profile">
-      <div class="profile-img">
-        <img id="profileImg" alt="profile">
-        <p class="edit-btn" onclick="openImagePicker()">✎</p>
+    <section class="cards">
+      <div class="card income">
+        <h4>Income</h4>
+        <p id="income">₹0</p>
+        <button onclick="butt()">ADD</button>
+        <div id="add">
+          <input type="number" id="incomeInput" placeholder="Monthly Income">
+          <button onclick="setIncome()">Save</button>
+        </div>
       </div>
-      <h4 class="puser"></h4>
-      <input type="file" id="imgInput" accept="image/*" hidden>
-    </div>
 
-    <nav>
-      <a class="active" href="dashboard.html">Dashboard</a>
-      <a href="transactions.html">Transactions</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+      <div class="card expense">
+        <h4>Expenses</h4>
+        <p id="expense">₹0</p>
+      </div>
 
-    <a class="logout" href="#" onclick="logout()">LogOut</a>
-  </aside>
+      <div class="card balance">
+        <h4>Balance</h4>
+        <p id="balance">₹0</p>
+      </div>
 
-  <main class="main">
-    <div class="topbar">
-      <h2>Dashboard</h2>
-      <span id="currentDate"></span>
-    </div>
+      <div class="card count">
+        <h4>Transactions</h4>
+        <h4 id="date"></h4>
+        <p id="txCount">0</p>
+      </div>
+    </section>
 
-    <!-- Your existing dashboard content stays SAME -->
+    <section class="grid-2">
+      <div class="panel">
+        <h3>Add Expense</h3>
+        <select id="category">
+          <option>Food</option>
+          <option>Shopping</option>
+          <option>Fuel</option>
+          <option>Travel</option>
+        </select>
+
+        <button onclick="ad()">Add</button>
+
+        <div id="ad">
+          <input type="number" id="amount" placeholder="Amount">
+          <button onclick="addExpense()">Save</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Total Expenses</h3>
+      <section class="panel">
+        <h3>Monthly Analysis</h3>
+        <canvas id="analysisChart" height="120"></canvas>
+        <p id="analysisText"></p>
+      </section>
+    </section>
 
   </main>
 </div>
@@ -121,8 +110,8 @@
 
 <script>
   function logout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.replace("login.html");
+    localStorage.removeItem("loggedIn");
+    window.location.replace("./login.html");
   }
 </script>
 

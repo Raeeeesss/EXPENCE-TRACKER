@@ -258,10 +258,10 @@
         document.getElementById("signform").addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const username = usernameInput.value.trim();
-            const email = emailInput.value.trim().toLowerCase();
-            const password = passwordInput.value;
-            const cpassword = cpasswordInput.value;
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim().toLowerCase();
+            const password = document.getElementById("password").value;
+            const cpassword = document.getElementById("cpassword").value;
             const error = document.getElementById("error");
 
             const emailPattern = /^[^\s@]+@[^\s@]+\.(com|in|co\.in)$/;
@@ -287,9 +287,10 @@
             users.push({ username, email, password });
             localStorage.setItem("users", JSON.stringify(users));
 
-            window.location.replace("login.html");
+            window.location.replace("./login.html");
         });
     </script>
+
 
 
 </body>

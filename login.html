@@ -300,8 +300,9 @@
 
         function nextStep() {
             const emailInput = document.getElementById("email");
+
             if (!emailInput.value.trim()) {
-                error.innerText = "Please enter email or phone";
+                error.innerText = "Please fill the field";
                 return;
             }
 
@@ -311,6 +312,7 @@
             steps[currentstep].classList.remove("active");
             currentstep++;
             steps[currentstep].classList.add("active");
+
             stepText.innerText = `Step ${currentstep + 1} of 2`;
         }
 
@@ -321,7 +323,7 @@
             const users = JSON.parse(localStorage.getItem("users")) || [];
 
             const matchedUser = users.find(
-                u => u.email === enteredEmail && u.password === password
+                u => u.email.toLowerCase() === enteredEmail && u.password === password
             );
 
             if (!matchedUser) {
@@ -329,8 +331,8 @@
                 return;
             }
 
-            localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
-            window.location.replace("dashboard.html");
+            localStorage.setItem("loggedIn", "true");
+            window.location.replace("./dashboard.html");
         });
     </script>
 
