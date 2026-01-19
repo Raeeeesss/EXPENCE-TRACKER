@@ -258,45 +258,39 @@
         document.getElementById("signform").addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const username = document.getElementById(`username`).value
-            const email = document.getElementById(`email`).value;
-            const password = document.getElementById("password").value;
-            const cpassword = document.getElementById("cpassword").value;
-            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|co\.in)$/;
+            const username = usernameInput.value.trim();
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passwordInput.value;
+            const cpassword = cpasswordInput.value;
+            const error = document.getElementById("error");
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.(com|in|co\.in)$/;
             const mobilePattern = /^[6-9]\d{9}$/;
 
-
-            const isEmailValid = emailPattern.test(email);
-            const isMobileValid = mobilePattern.test(email);
-
-            if (!isEmailValid && !isMobileValid) {
-                document.getElementById(`error`).innerText = `Please enter valid email or phone`
+            if (!emailPattern.test(email) && !mobilePattern.test(email)) {
+                error.innerText = "Please enter valid email or phone";
                 return;
             }
+
             if (password !== cpassword) {
-                document.getElementById("error").innerText = "Passwords do not match";
-                return;
-            }
-            let users = JSON.parse(localStorage.getItem(`users`)) || []
-            const isDuplicate = users.some(user => user.email === email)
-            if (isDuplicate) {
-                document.getElementById("error").innerText = "This email or phone is already in exist.";
+                error.innerText = "Passwords do not match";
                 return;
             }
 
-            const user = {
-                username: username,
-                email: email,
-                password: password
-            }
-            users.push(user)
-            localStorage.setItem(`users`, JSON.stringify(users))
-            window.location.href = "login.html";
+            let users = JSON.parse(localStorage.getItem("users")) || [];
 
+            if (users.some(u => u.email === email)) {
+                error.innerText = "Account already exists";
+                return;
+            }
+
+            users.push({ username, email, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            window.location.replace("login.html");
         });
-
-
     </script>
+
 
 </body>
 

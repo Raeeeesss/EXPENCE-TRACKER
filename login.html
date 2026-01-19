@@ -296,50 +296,44 @@
         const steps = document.querySelectorAll(".step");
         const stepText = document.getElementById("stepText");
         let currentstep = 0;
+        let enteredEmail = "";
 
         function nextStep() {
-            const input = steps[currentstep].querySelector("input");
-
-            if (!input.value.trim()) {
-                document.getElementById("error").innerText = "Please fill the field";
+            const emailInput = document.getElementById("email");
+            if (!emailInput.value.trim()) {
+                error.innerText = "Please enter email or phone";
                 return;
             }
 
-            document.getElementById("error").innerText = "";
+            enteredEmail = emailInput.value.trim().toLowerCase();
+            error.innerText = "";
 
             steps[currentstep].classList.remove("active");
             currentstep++;
             steps[currentstep].classList.add("active");
-
-            stepText.innerText = `Step ${currentstep + 1} of ${steps.length}`;
+            stepText.innerText = `Step ${currentstep + 1} of 2`;
         }
 
         document.getElementById("login").addEventListener("submit", function (e) {
             e.preventDefault();
 
-            const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value;
-
             const users = JSON.parse(localStorage.getItem("users")) || [];
-            const error = document.getElementById("error");
 
-            if (users.length === 0) {
-                error.innerText = "No user found. Please create an account.";
+            const matchedUser = users.find(
+                u => u.email === enteredEmail && u.password === password
+            );
+
+            if (!matchedUser) {
+                error.innerText = "Wrong email or password";
                 return;
             }
 
-            // 🔍 FIND MATCHING USER
-            const matchedUser = users.find(
-                user => user.email === email && user.password === password
-            );
-
-            if (matchedUser) {
-                window.location.href = "index.html";
-            } else {
-                error.innerText = "Wrong email or password";
-            }
+            localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
+            window.location.replace("dashboard.html");
         });
     </script>
+
 
 
 </body>
